@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<ruleset name="Required Common PHP">
+    <description>Coding Standard for Common PHP.</description>
+
+    <rule ref="Required"/>
+
+    <!-- Verify that the text_domain is set to the desired text-domain.
+     Multiple valid text domains can be provided as a comma-delimited list. -->
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array" value="required-common" />
+        </properties>
+    </rule>
+
+    <!-- Define both prefixes for functions and hooks. -->
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array" value="Required\Common"/>
+        </properties>
+    </rule>
+
+    <!-- Documentation is organized with the use of namespaces. -->
+    <rule ref="WordPress-Docs">
+        <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+    </rule>
+</ruleset>

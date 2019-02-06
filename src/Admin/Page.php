@@ -7,7 +7,7 @@
 
 namespace Required\Common\Admin;
 
-use Required\Common\Registrable;
+use Required\Common\Contracts\Registrable;
 
 /**
  * Class used to register pages.

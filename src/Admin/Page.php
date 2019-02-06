@@ -140,6 +140,15 @@ class Page implements Registrable {
 	private $hook_name;
 
 	/**
+	 * Callback to be called when page is loaded.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string
+	 */
+	private $on_load_callback;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.0
@@ -207,6 +216,13 @@ class Page implements Registrable {
 					$this->menu_slug,
 					[ $this->view, 'render' ]
 				);
+
+				if ( $this->hook_name && is_callable( $this->on_load_callback ) ) {
+					add_action(
+						"load-{$this->hook_name}",
+						$this->on_load_callback
+					);
+				}
 			};
 		} else {
 			return function() {
@@ -219,6 +235,13 @@ class Page implements Registrable {
 					$this->icon,
 					$this->position
 				);
+
+				if ( $this->hook_name && is_callable( $this->on_load_callback ) ) {
+					add_action(
+						"load-{$this->hook_name}",
+						$this->on_load_callback
+					);
+				}
 			};
 		}
 	}
@@ -243,6 +266,17 @@ class Page implements Registrable {
 	 */
 	public function get_view() {
 		return $this->view;
+	}
+
+	/**
+	 * Registers a callback to be called when page is loaded.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param callable $callback Callback called when page is loaded.
+	 */
+	public function on_load( callable $callback ) {
+		$this->on_load_callback = $callback;
 	}
 
 	/**

@@ -108,7 +108,7 @@ abstract class PostMeta implements Registrable {
 	 * @param array  $caps      User capabilities.
 	 * @return bool True if the key is protected, false otherwise.
 	 */
-	protected function auth( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ): bool {
+	public function auth( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ): bool {
 		return is_protected_meta( $meta_key, 'post' );
 	}
 
@@ -122,7 +122,7 @@ abstract class PostMeta implements Registrable {
 	 * @param string $object_type     Object type.
 	 * @return mixed Sanitized meta value.
 	 */
-	protected function sanitize( $meta_value, $meta_key, $object_type ) {
+	public function sanitize( $meta_value, $meta_key, $object_type ) {
 		return $meta_value;
 	}
 

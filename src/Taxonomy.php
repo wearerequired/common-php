@@ -28,8 +28,10 @@ abstract class Taxonomy implements Registrable {
 	 * Creates a taxonomy object.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @return bool Whether the taxonomy was registered successfully.
 	 */
-	public function register() {
+	public function register(): bool {
 		if ( ! taxonomy_exists( static::NAME ) ) {
 			register_taxonomy(
 				static::NAME,
@@ -41,6 +43,8 @@ abstract class Taxonomy implements Registrable {
 				register_taxonomy_for_object_type( static::NAME, $object_type );
 			}
 		}
+
+		return true;
 	}
 
 	/**

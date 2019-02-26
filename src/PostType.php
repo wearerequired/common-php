@@ -20,14 +20,18 @@ abstract class PostType implements Registrable {
 	 * Creates a post type object.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @return bool Whether the post type was registered successfully.
 	 */
-	public function register() {
+	public function register(): bool {
 		if ( ! post_type_exists( static::NAME ) ) {
 			register_post_type(
 				static::NAME,
 				$this->get_args()
 			);
 		}
+
+		return true;
 	}
 
 	/**
@@ -37,5 +41,5 @@ abstract class PostType implements Registrable {
 	 *
 	 * @return array Post type arguments.
 	 */
-	abstract protected function get_args() : array;
+	abstract protected function get_args(): array;
 }

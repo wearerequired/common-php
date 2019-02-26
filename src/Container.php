@@ -22,7 +22,7 @@ class Container {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var Registrable[]
+	 * @var \Required\Common\Contracts\Registrable[]
 	 */
 	private $values = [];
 

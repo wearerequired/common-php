@@ -28,7 +28,7 @@ abstract class PostMeta implements Registrable {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return bool Whether the action was registered successfully.
+	 * @return bool Whether the post meta was registered successfully.
 	 */
 	public function register(): bool {
 		return register_post_meta(
@@ -108,7 +108,7 @@ abstract class PostMeta implements Registrable {
 	 * @param array  $caps      User capabilities.
 	 * @return bool True if the key is protected, false otherwise.
 	 */
-	public function auth( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ): bool {
+	public function auth( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ): bool { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 		return is_protected_meta( $meta_key, 'post' );
 	}
 
@@ -122,7 +122,7 @@ abstract class PostMeta implements Registrable {
 	 * @param string $object_type     Object type.
 	 * @return mixed Sanitized meta value.
 	 */
-	public function sanitize( $meta_value, $meta_key, $object_type ) {
+	public function sanitize( $meta_value, $meta_key, $object_type ) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 		return $meta_value;
 	}
 

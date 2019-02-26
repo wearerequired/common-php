@@ -21,5 +21,5 @@ interface Registrable {
 	 *
 	 * @return bool Whether the action was registered successfully.
 	 */
-	public function register();
+	public function register(): bool;
 }

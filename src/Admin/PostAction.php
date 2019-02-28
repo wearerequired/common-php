@@ -30,7 +30,7 @@ abstract class PostAction implements Registrable {
 	 *
 	 * @return bool Whether the action was registered successfully.
 	 */
-	public function register() {
+	public function register(): bool {
 		return add_action( 'admin_post_' . static::ACTION, [ $this, 'callback' ] );
 	}
 

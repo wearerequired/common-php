@@ -286,7 +286,7 @@ class Page implements Registrable {
 	 *
 	 * @return bool Whether the page was registered successfully.
 	 */
-	public function register() {
+	public function register(): bool {
 		$action = $this->get_action();
 		if ( ! $action ) {
 			return false;

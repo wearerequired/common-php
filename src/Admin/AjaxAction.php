@@ -48,7 +48,7 @@ abstract class AjaxAction implements Registrable {
 	 *
 	 * @return bool Whether the action was registered successfully.
 	 */
-	public function register() {
+	public function register(): bool {
 		if ( $this->allow_unauthenticated ) {
 			add_action( 'wp_ajax_nopriv_' . static::ACTION, [ $this, 'callback' ] );
 		}

@@ -25,10 +25,11 @@ abstract class PostType implements Registrable {
 	 */
 	public function register(): bool {
 		if ( ! post_type_exists( static::NAME ) ) {
-			register_post_type(
+			$post_type = register_post_type(
 				static::NAME,
 				$this->get_args()
 			);
+			return ! is_wp_error( $post_type );
 		}
 
 		return true;

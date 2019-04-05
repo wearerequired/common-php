@@ -33,15 +33,12 @@ abstract class Taxonomy implements Registrable {
 	 */
 	public function register(): bool {
 		if ( ! taxonomy_exists( static::NAME ) ) {
-			register_taxonomy(
+			$taxonomy = register_taxonomy(
 				static::NAME,
 				$this->get_object_types(),
 				$this->get_args()
 			);
-		} else {
-			foreach ( $this->get_object_types() as $object_type ) {
-				register_taxonomy_for_object_type( static::NAME, $object_type );
-			}
+			return ! is_wp_error( $taxonomy );
 		}
 
 		return true;

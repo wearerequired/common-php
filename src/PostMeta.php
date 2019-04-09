@@ -123,7 +123,7 @@ abstract class PostMeta implements Registrable {
 	 * @return mixed Sanitized meta value.
 	 */
 	public function sanitize( $meta_value, $meta_key, $object_type ) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-		return sanitize_text_field( $meta_value );
+		return $meta_value;
 	}
 
 	/**

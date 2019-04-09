@@ -4,7 +4,6 @@
  *
  * @since 1.0.0
  *
- * @package Required\Common
  */
 
 namespace Required\Common;

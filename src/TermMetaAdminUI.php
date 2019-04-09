@@ -4,7 +4,6 @@
  *
  * @since 1.0.0
  *
- * @package Required\Common
  */
 
 namespace Required\Common;
@@ -13,7 +12,7 @@ use Required\Common\Contracts\Registrable;
 use WP_Term;
 
 /**
- * Class used to implement term meta.
+ * Class used to implement a UI for adding/editing term meta.
  *
  * @since 1.0.0
  */
@@ -94,7 +93,6 @@ abstract class TermMetaAdminUI implements Registrable {
 	 * Renders field when adding a new term.
 	 *
 	 * @since 1.0.0
-	 *
 	 */
 	abstract public function render_add_field();
 

@@ -39,13 +39,13 @@ abstract class PostMeta implements Registrable {
 	}
 
 	/**
-	 * Gets term meta arguments for this term meta object.
+	 * Gets post meta arguments for this post meta object.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @see register_meta() For the supported arguments.
 	 *
-	 * @return array Term meta arguments.
+	 * @return array Post meta arguments.
 	 */
 	protected function get_args(): array {
 		return [
@@ -113,7 +113,7 @@ abstract class PostMeta implements Registrable {
 	}
 
 	/**
-	 * Sanitization of the term meta data.
+	 * Sanitization of the post meta data.
 	 *
 	 * @since 1.0.0
 	 *
@@ -123,7 +123,7 @@ abstract class PostMeta implements Registrable {
 	 * @return mixed Sanitized meta value.
 	 */
 	public function sanitize( $meta_value, $meta_key, $object_type ) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-		return $meta_value;
+		return sanitize_text_field( $meta_value );
 	}
 
 	/**

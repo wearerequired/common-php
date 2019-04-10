@@ -54,7 +54,7 @@ class Container {
 	 *
 	 * @return bool True on success, false if already bootstrapped.
 	 */
-	public function bootstrap() {
+	public function bootstrap(): bool {
 		if ( $this->bootstrapped ) {
 			return false;
 		}

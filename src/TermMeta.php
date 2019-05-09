@@ -1,10 +1,9 @@
 <?php
 /**
- * PostMeta class
+ * TermMeta class
  *
  * @since 1.0.0
  *
- * @package Required\Common
  */
 
 namespace Required\Common;
@@ -12,14 +11,14 @@ namespace Required\Common;
 use Required\Common\Contracts\Registrable;
 
 /**
- * Class used to implement post meta.
+ * Class used to implement term meta.
  *
  * @since 1.0.0
  */
-abstract class PostMeta implements Registrable {
+abstract class TermMeta implements Registrable {
 
 	/**
-	 * Post meta key.
+	 * Term meta key.
 	 */
 	public const KEY = null;
 
@@ -28,24 +27,24 @@ abstract class PostMeta implements Registrable {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return bool Whether the post meta was registered successfully.
+	 * @return bool Whether the term meta was registered successfully.
 	 */
 	public function register(): bool {
-		return register_post_meta(
-			$this->post_type(),
+		return register_term_meta(
+			$this->taxonomy(),
 			static::KEY,
 			$this->get_args()
 		);
 	}
 
 	/**
-	 * Gets post meta arguments for this post meta object.
+	 * Gets term meta arguments for this term meta object.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @see register_meta() For the supported arguments.
 	 *
-	 * @return array Post meta arguments.
+	 * @return array Term meta arguments.
 	 */
 	protected function get_args(): array {
 		return [
@@ -59,15 +58,15 @@ abstract class PostMeta implements Registrable {
 	}
 
 	/**
-	 * The post type to register a meta key for.
+	 * The taxonomy to register a meta key for.
 	 *
-	 * Pass an empty string to register the meta key across all existing post types.
+	 * Pass an empty string to register the meta key across all existing taxonomies.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return string Post type to register a meta key for.
+	 * @return string Taxonomy to register a meta key for.
 	 */
-	protected function post_type(): string {
+	protected function taxonomy(): string {
 		return '';
 	}
 
@@ -100,7 +99,7 @@ abstract class PostMeta implements Registrable {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param bool   $allowed   Whether the user can add the post meta. Default false.
+	 * @param bool   $allowed   Whether the user can add the term meta. Default false.
 	 * @param string $meta_key  The meta key.
 	 * @param int    $object_id Object ID.
 	 * @param int    $user_id   User ID.
@@ -109,11 +108,11 @@ abstract class PostMeta implements Registrable {
 	 * @return bool True if the key is protected, false otherwise.
 	 */
 	public function auth( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ): bool { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-		return is_protected_meta( $meta_key, 'post' );
+		return is_protected_meta( $meta_key, 'term' );
 	}
 
 	/**
-	 * Sanitization of the post meta data.
+	 * Sanitization of the term meta data.
 	 *
 	 * @since 1.0.0
 	 *

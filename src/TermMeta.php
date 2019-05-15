@@ -105,10 +105,10 @@ abstract class TermMeta implements Registrable {
 	 * @param int    $user_id   User ID.
 	 * @param string $cap       Capability name.
 	 * @param array  $caps      User capabilities.
-	 * @return bool True if the key is protected, false otherwise.
+	 * @return bool False if the key is protected, true otherwise.
 	 */
 	public function auth( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ): bool { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-		return is_protected_meta( $meta_key, 'term' );
+		return ! is_protected_meta( $meta_key, 'term' );
 	}
 
 	/**

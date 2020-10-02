@@ -7,7 +7,7 @@
 
 namespace Required\Common\Admin;
 
-use Required\Common\Registrable;
+use Required\Common\Contracts\Registrable;
 
 /**
  * Class used to register Ajax actions.
@@ -15,6 +15,8 @@ use Required\Common\Registrable;
  * @since 1.0.0
  */
 abstract class AjaxAction implements Registrable {
+
+	const ACTION = 'heartbeat';
 
 	/**
 	 * Whether the Ajax action can be called unauthenticated.

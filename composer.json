@@ -28,5 +28,8 @@
     "branch-alias": {
       "dev-master": "1.0.x-dev"
     }
+  },
+  "require-dev": {
+    "szepeviktor/phpstan-wordpress": "^0.6.5"
   }
 }

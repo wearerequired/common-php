@@ -52,6 +52,7 @@ abstract class PostMeta implements Registrable {
 			'type'              => $this->type(),
 			'description'       => $this->description(),
 			'single'            => $this->is_single(),
+			'default'           => $this->default(),
 			'sanitize_callback' => [ $this, 'sanitize' ],
 			'auth_callback'     => [ $this, 'auth' ],
 			'show_in_rest'      => $this->show_in_rest(),
@@ -96,20 +97,25 @@ abstract class PostMeta implements Registrable {
 	}
 
 	/**
-	 * Whether the user is allowed to edit meta.
+	 * Whether the meta key has one value per object, or an array of values per object.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param bool   $allowed   Whether the user can add the post meta. Default false.
-	 * @param string $meta_key  The meta key.
-	 * @param int    $object_id Object ID.
-	 * @param int    $user_id   User ID.
-	 * @param string $cap       Capability name.
-	 * @param array  $caps      User capabilities.
-	 * @return bool False if the key is protected, true otherwise.
+	 * @return bool Whether the meta key has one value per object.
 	 */
-	public function auth( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ): bool { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-		return ! is_protected_meta( $meta_key, 'post' );
+	protected function is_single(): bool {
+		return false;
+	}
+
+	/**
+	 * The default value if no value has been set yet.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return mixed The default value.
+	 */
+	protected function default() {
+		return '';
 	}
 
 	/**
@@ -127,14 +133,20 @@ abstract class PostMeta implements Registrable {
 	}
 
 	/**
-	 * Whether the meta key has one value per object, or an array of values per object.
+	 * Whether the user is allowed to edit meta.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return bool Whether the meta key has one value per object.
+	 * @param bool   $allowed   Whether the user can add the post meta. Default false.
+	 * @param string $meta_key  The meta key.
+	 * @param int    $object_id Object ID.
+	 * @param int    $user_id   User ID.
+	 * @param string $cap       Capability name.
+	 * @param array  $caps      User capabilities.
+	 * @return bool False if the key is protected, true otherwise.
 	 */
-	protected function is_single(): bool {
-		return false;
+	public function auth( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ): bool { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+		return ! is_protected_meta( $meta_key, 'post' );
 	}
 
 	/**

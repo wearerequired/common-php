@@ -19,9 +19,9 @@ class Page implements Registrable {
 	/**
 	 * Type of admin page.
 	 *
-	 * @see is_admin()
-	 *
 	 * @since 1.0.0
+	 *
+	 * @see is_admin()
 	 *
 	 * @var int
 	 */
@@ -30,9 +30,9 @@ class Page implements Registrable {
 	/**
 	 * Type of admin page.
 	 *
-	 * @see is_network_admin()
-	 *
 	 * @since 1.0.0
+	 *
+	 * @see is_network_admin()
 	 *
 	 * @var int
 	 */
@@ -41,9 +41,9 @@ class Page implements Registrable {
 	/**
 	 * Type of admin page.
 	 *
-	 * @see is_user_admin()
-	 *
 	 * @since 1.0.0
+	 *
+	 * @see is_user_admin()
 	 *
 	 * @var int
 	 */

@@ -8,7 +8,6 @@
 namespace Required\Common;
 
 use Required\Common\Contracts\Registrable;
-use Required\Common\Contracts\ShortcodeView;
 
 /**
  * Class used to implement shortcode.
@@ -22,7 +21,7 @@ abstract class Shortcode implements Registrable {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var ShortcodeView
+	 * @var \Required\Common\Contracts\ShortcodeView
 	 */
 	protected $view;
 
@@ -31,7 +30,7 @@ abstract class Shortcode implements Registrable {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param ShortcodeView $view Shortcode View.
+	 * @param \Required\Common\Contracts\ShortcodeView $view Shortcode View.
 	 */
 	public function __construct( $view ) {
 		$this->view = $view;

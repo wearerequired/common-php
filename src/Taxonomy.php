@@ -20,6 +20,7 @@ abstract class Taxonomy implements Registrable {
 	 * Object types the taxonomy is associated with.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @var array
 	 */
 	protected $object_types;

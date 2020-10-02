@@ -3,7 +3,6 @@
  * TermMetaAdminUI class
  *
  * @since 1.0.0
- *
  */
 
 namespace Required\Common;
@@ -137,5 +136,5 @@ abstract class TermMetaAdminUI implements Registrable {
 	 * @param string $column_name Name of the column.
 	 * @param int    $term_id     Term ID.
 	 */
-	public function render_column( string $column_name, int $term_id ) {}
+	public function render_column( string $column_name, int $term_id ) {} // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 }

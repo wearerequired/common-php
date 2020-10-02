@@ -3,7 +3,6 @@
  * TermMeta class
  *
  * @since 1.0.0
- *
  */
 
 namespace Required\Common;

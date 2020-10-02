@@ -25,7 +25,7 @@ class Page implements Registrable {
 	 *
 	 * @var int
 	 */
-	const ADMIN = 1;
+	public const ADMIN = 1;
 
 	/**
 	 * Type of admin page.
@@ -36,7 +36,7 @@ class Page implements Registrable {
 	 *
 	 * @var int
 	 */
-	const ADMIN_NETWORK = 2;
+	public const ADMIN_NETWORK = 2;
 
 	/**
 	 * Type of admin page.
@@ -47,7 +47,7 @@ class Page implements Registrable {
 	 *
 	 * @var int
 	 */
-	const ADMIN_USER = 3;
+	public const ADMIN_USER = 3;
 
 	/**
 	 * Type of admin screen.

@@ -16,7 +16,7 @@ use Required\Common\Contracts\Registrable;
  */
 abstract class Taxonomy implements Registrable {
 
-	const NAME = 'category';
+	public const NAME = 'category';
 
 	/**
 	 * Object types the taxonomy is associated with.

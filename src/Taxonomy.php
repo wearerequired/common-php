@@ -2,7 +2,7 @@
 /**
  * Taxonomy class
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 namespace Required\Common;
@@ -12,14 +12,14 @@ use Required\Common\Contracts\Registrable;
 /**
  * Class used to implement custom taxonomies.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 abstract class Taxonomy implements Registrable {
 
 	/**
 	 * Object types the taxonomy is associated with.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var array
 	 */
@@ -28,7 +28,7 @@ abstract class Taxonomy implements Registrable {
 	/**
 	 * Creates a taxonomy object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return bool Whether the taxonomy was registered successfully.
 	 */
@@ -42,13 +42,17 @@ abstract class Taxonomy implements Registrable {
 			return ! is_wp_error( $taxonomy );
 		}
 
+		print 'foo';
+
+		__( 'foo', 'bar' );
+
 		return true;
 	}
 
 	/**
 	 * Sets object types the taxonomy is associated with.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param array|string $object_type Object type or array of object types with which the taxonomy should be associated.
 	 */
@@ -59,7 +63,7 @@ abstract class Taxonomy implements Registrable {
 	/**
 	 * Gets object types the taxonomy is associated with.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return array Object types the taxonomy is associated with.
 	 */
@@ -70,7 +74,7 @@ abstract class Taxonomy implements Registrable {
 	/**
 	 * Gets taxonomy arguments for this taxonomy object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return array Taxonomy arguments.
 	 */

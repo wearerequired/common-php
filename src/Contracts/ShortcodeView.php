@@ -2,7 +2,7 @@
 /**
  * ShortcodeView class.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 namespace Required\Common\Contracts;
@@ -10,14 +10,14 @@ namespace Required\Common\Contracts;
 /**
  * Class used to implement shortcode view.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 interface ShortcodeView {
 
 	/**
 	 * Renders the shortcode.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param array  $attributes    Attributes of the shortcode.
 	 * @param null   $content       The content.

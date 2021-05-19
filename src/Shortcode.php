@@ -2,7 +2,7 @@
 /**
  * Shortcode class
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 namespace Required\Common;
@@ -12,14 +12,14 @@ use Required\Common\Contracts\Registrable;
 /**
  * Class used to implement shortcode.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 abstract class Shortcode implements Registrable {
 
 	/**
 	 * Shortcode view object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var \Required\Common\Contracts\ShortcodeView
 	 */
@@ -28,7 +28,7 @@ abstract class Shortcode implements Registrable {
 	/**
 	 * Creates a shortcode object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param \Required\Common\Contracts\ShortcodeView $view Shortcode View.
 	 */
@@ -39,7 +39,7 @@ abstract class Shortcode implements Registrable {
 	/**
 	 * Creates a shortcode object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return bool Whether shortcode was registered successfully.
 	 */

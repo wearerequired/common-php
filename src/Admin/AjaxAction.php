@@ -2,7 +2,7 @@
 /**
  * AjaxAction class.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 namespace Required\Common\Admin;
@@ -12,7 +12,7 @@ use Required\Common\Registrable;
 /**
  * Class used to register Ajax actions.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 abstract class AjaxAction implements Registrable {
 
@@ -26,7 +26,7 @@ abstract class AjaxAction implements Registrable {
 	/**
 	 * Whether the Ajax action can be called unauthenticated.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param bool $allow Whether the Ajax action can be called unauthenticated.
 	 */
@@ -37,14 +37,14 @@ abstract class AjaxAction implements Registrable {
 	/**
 	 * The callback of the action.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	abstract public function callback();
 
 	/**
 	 * Registers the action.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return bool Whether the action was registered successfully.
 	 */

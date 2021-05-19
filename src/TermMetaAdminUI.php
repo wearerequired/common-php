@@ -2,7 +2,7 @@
 /**
  * TermMetaAdminUI class
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 namespace Required\Common;
@@ -13,7 +13,7 @@ use WP_Term;
 /**
  * Class used to implement a UI for adding/editing term meta.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 abstract class TermMetaAdminUI implements Registrable {
 
@@ -34,7 +34,7 @@ abstract class TermMetaAdminUI implements Registrable {
 	/**
 	 * Constructor.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param \Required\Common\Taxonomy $taxonomy  The taxonomy.
 	 * @param \Required\Common\TermMeta $term_meta The term meta.
@@ -47,7 +47,7 @@ abstract class TermMetaAdminUI implements Registrable {
 	/**
 	 * Registers the object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return bool Whether the action was registered successfully.
 	 */
@@ -73,7 +73,7 @@ abstract class TermMetaAdminUI implements Registrable {
 	/**
 	 * Saves a new term meta.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param int $term_id Term ID.
 	 */
@@ -82,7 +82,7 @@ abstract class TermMetaAdminUI implements Registrable {
 	/**
 	 * Updates an existing term meta.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param int $term_id Term ID.
 	 */
@@ -91,14 +91,14 @@ abstract class TermMetaAdminUI implements Registrable {
 	/**
 	 * Renders field when adding a new term.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	abstract public function render_add_field();
 
 	/**
 	 * Renders field when editing a term.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param \WP_Term $term Current term object.
 	 */
@@ -107,7 +107,7 @@ abstract class TermMetaAdminUI implements Registrable {
 	/**
 	 * Adds the term meta to the list of list table columns.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param array $columns An array of columns.
 	 * @return array An array of columns.
@@ -119,7 +119,7 @@ abstract class TermMetaAdminUI implements Registrable {
 	/**
 	 * Adds the term meta to the list of sortable list table columns.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param array $sortable_columns An array of sortable columns.
 	 * @return array An array of sortable columns.
@@ -131,7 +131,7 @@ abstract class TermMetaAdminUI implements Registrable {
 	/**
 	 * Renders a list table column for the term meta.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param string $column_name Name of the column.
 	 * @param int    $term_id     Term ID.

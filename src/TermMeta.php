@@ -2,7 +2,7 @@
 /**
  * TermMeta class
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 namespace Required\Common;
@@ -12,7 +12,7 @@ use Required\Common\Contracts\Registrable;
 /**
  * Class used to implement term meta.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 abstract class TermMeta implements Registrable {
 
@@ -24,7 +24,7 @@ abstract class TermMeta implements Registrable {
 	/**
 	 * Registers the object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return bool Whether the term meta was registered successfully.
 	 */
@@ -39,7 +39,7 @@ abstract class TermMeta implements Registrable {
 	/**
 	 * Gets term meta arguments for this term meta object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @see register_meta() For the supported arguments.
 	 *
@@ -62,7 +62,7 @@ abstract class TermMeta implements Registrable {
 	 *
 	 * Pass an empty string to register the meta key across all existing taxonomies.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return string Taxonomy to register a meta key for.
 	 */
@@ -75,7 +75,7 @@ abstract class TermMeta implements Registrable {
 	 *
 	 * Valid values are 'string', 'boolean', 'integer', and 'number'.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return string Type of the data.
 	 */
@@ -86,7 +86,7 @@ abstract class TermMeta implements Registrable {
 	/**
 	 * A description of the data attached to this meta key.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return string Description of the data.
 	 */
@@ -97,7 +97,7 @@ abstract class TermMeta implements Registrable {
 	/**
 	 * Whether the meta key has one value per object, or an array of values per object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return bool Whether the meta key has one value per object.
 	 */
@@ -108,7 +108,7 @@ abstract class TermMeta implements Registrable {
 	/**
 	 * The default value if no value has been set yet.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return mixed The default value.
 	 */
@@ -119,7 +119,7 @@ abstract class TermMeta implements Registrable {
 	/**
 	 * Sanitization of the term meta data.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param mixed  $meta_value      Meta value to sanitize.
 	 * @param string $meta_key        Meta key.
@@ -133,7 +133,7 @@ abstract class TermMeta implements Registrable {
 	/**
 	 * Whether the user is allowed to edit meta.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param bool   $allowed   Whether the user can add the term meta. Default false.
 	 * @param string $meta_key  The meta key.
@@ -150,7 +150,7 @@ abstract class TermMeta implements Registrable {
 	/**
 	 * Whether data associated with this meta key can be considered public.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return bool Whether the data is public.
 	 */

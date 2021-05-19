@@ -2,7 +2,7 @@
 /**
  * Page class.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 namespace Required\Common\Admin;
@@ -12,14 +12,14 @@ use Required\Common\Contracts\Registrable;
 /**
  * Class used to register pages.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 class Page implements Registrable {
 
 	/**
 	 * Type of admin page.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @see is_admin()
 	 *
@@ -30,7 +30,7 @@ class Page implements Registrable {
 	/**
 	 * Type of admin page.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @see is_network_admin()
 	 *
@@ -41,7 +41,7 @@ class Page implements Registrable {
 	/**
 	 * Type of admin page.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @see is_user_admin()
 	 *
@@ -52,7 +52,7 @@ class Page implements Registrable {
 	/**
 	 * Type of admin screen.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var int
 	 */
@@ -61,7 +61,7 @@ class Page implements Registrable {
 	/**
 	 * The text to be displayed in the title tags of the page when the menu is selected.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var string
 	 */
@@ -70,7 +70,7 @@ class Page implements Registrable {
 	/**
 	 * The text to be used for the menu.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var string
 	 */
@@ -79,7 +79,7 @@ class Page implements Registrable {
 	/**
 	 * The capability required for this menu to be displayed to the user.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var string
 	 */
@@ -88,7 +88,7 @@ class Page implements Registrable {
 	/**
 	 * The slug name to refer to this menu by (should be unique for this menu).
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var string
 	 */
@@ -97,7 +97,7 @@ class Page implements Registrable {
 	/**
 	 * The view to render the admin page.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var \Required\Common\Admin\PageView
 	 */
@@ -106,7 +106,7 @@ class Page implements Registrable {
 	/**
 	 * The slug name for the parent menu (or the file name of a standard WordPress admin page).
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var string
 	 */
@@ -115,7 +115,7 @@ class Page implements Registrable {
 	/**
 	 * The icon to be used for the menu.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var string
 	 */
@@ -124,7 +124,7 @@ class Page implements Registrable {
 	/**
 	 * The position in the menu order this one should appear.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var null|int
 	 */
@@ -133,7 +133,7 @@ class Page implements Registrable {
 	/**
 	 * The page's hook_suffix.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var string
 	 */
@@ -142,7 +142,7 @@ class Page implements Registrable {
 	/**
 	 * Callback to be called when page is loaded.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var string
 	 */
@@ -151,7 +151,7 @@ class Page implements Registrable {
 	/**
 	 * Constructor.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param int                             $admin       Type of admin screen.
 	 * @param string                          $title       The text to be displayed in the title tags of the page when the menu is selected.
@@ -178,7 +178,7 @@ class Page implements Registrable {
 	/**
 	 * Returns the action for registering the page.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return string
 	 */
@@ -201,7 +201,7 @@ class Page implements Registrable {
 	/**
 	 * Returns the callback for adding the page to the admin menu.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return callable Callback for adding the page to the admin menu.
 	 */
@@ -249,7 +249,7 @@ class Page implements Registrable {
 	/**
 	 * Returns the hook name of the menu page.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return string The hook name of the menu page.
 	 */
@@ -260,7 +260,7 @@ class Page implements Registrable {
 	/**
 	 * Returns the view of the page.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return \Required\Common\Admin\PageView The view of the page.
 	 */
@@ -271,7 +271,7 @@ class Page implements Registrable {
 	/**
 	 * Registers a callback to be called when page is loaded.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param callable $callback Callback called when page is loaded.
 	 */
@@ -282,7 +282,7 @@ class Page implements Registrable {
 	/**
 	 * Registers the settings page.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return bool Whether the page was registered successfully.
 	 */

@@ -73,7 +73,7 @@ abstract class TermMeta implements Registrable {
 	/**
 	 * The type of data associated with this meta key.
 	 *
-	 * Valid values are 'string', 'boolean', 'integer', and 'number'.
+	 * Valid values are 'string', 'boolean', 'integer', 'number', 'array', and 'object'.
 	 *
 	 * @since 0.1.0
 	 *

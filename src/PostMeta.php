@@ -148,13 +148,17 @@ abstract class PostMeta implements Registrable {
 	}
 
 	/**
-	 * Whether data associated with this meta key can be considered public.
+	 * Whether data associated with this meta key can be considered public and
+	 * should be accessible via the REST API.
+	 *
+	 * When registering complex meta values this argument may optionally be an
+	 * array with 'schema' or 'prepare_callback' keys instead of a boolean.
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return bool Whether the data is public.
+	 * @return bool|array Whether the data is public.
 	 */
-	protected function show_in_rest(): bool {
+	protected function show_in_rest() {
 		return false;
 	}
 }

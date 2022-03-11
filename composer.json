@@ -28,5 +28,8 @@
     "psr-4": {
       "Required\\Common\\": "src"
     }
+  },
+  "require-dev": {
+    "szepeviktor/phpstan-wordpress": "^0.6.5"
   }
 }

@@ -7,7 +7,7 @@
 
 namespace Required\Common\Admin;
 
-use Required\Common\Registrable;
+use Required\Common\Contracts\Registrable;
 
 /**
  * Class used to register post/get actions.
@@ -15,6 +15,8 @@ use Required\Common\Registrable;
  * @since 0.1.0
  */
 abstract class PostAction implements Registrable {
+
+	public const ACTION = 'post-action';
 
 	/**
 	 * The callback of the action.

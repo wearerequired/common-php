@@ -16,6 +16,8 @@ use Required\Common\Contracts\Registrable;
  */
 abstract class Shortcode implements Registrable {
 
+	public const TAG = 'shortcode';
+
 	/**
 	 * Shortcode view object.
 	 *

@@ -16,6 +16,8 @@ use Required\Common\Contracts\Registrable;
  */
 abstract class PostType implements Registrable {
 
+	public const NAME = 'post';
+
 	/**
 	 * Creates a post type object.
 	 *

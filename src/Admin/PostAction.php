@@ -16,7 +16,7 @@ use Required\Common\Contracts\Registrable;
  */
 abstract class PostAction implements Registrable {
 
-	public const ACTION = 'heartbeat';
+	public const ACTION = 'post-action';
 
 	/**
 	 * The callback of the action.

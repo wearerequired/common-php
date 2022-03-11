@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-* Use [Args](https://github.com/johnbillion/args) to populate post type arguments.
+* Use [Args](https://github.com/johnbillion/args) to populate post type and taxonomy arguments.
 
 ## [0.2.1] - 2022-03-11
 

@@ -1,8 +1,8 @@
 {
   "name": "wearerequired/common-php",
-  "type": "library",
   "description": "Common PHP Components for WordPress",
   "license": "GPL-2.0-or-later",
+  "type": "library",
   "authors": [
     {
       "name": "required",
@@ -19,17 +19,20 @@
   "require": {
     "php": ">=7.4"
   },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "0.2.x-dev"
-    }
+  "require-dev": {
+    "szepeviktor/phpstan-wordpress": "^1.0"
   },
   "autoload": {
     "psr-4": {
       "Required\\Common\\": "src"
     }
   },
-  "require-dev": {
-    "szepeviktor/phpstan-wordpress": "^0.6.5"
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.2.x-dev"
+    }
+  },
+  "scripts": {
+    "analyze": "vendor/bin/phpstan analyze --no-progress"
   }
 }

@@ -2,7 +2,7 @@
 /**
  * PostType class
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 namespace Required\Common;
@@ -12,7 +12,7 @@ use Required\Common\Contracts\Registrable;
 /**
  * Class used to implement custom post types.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 abstract class PostType implements Registrable {
 
@@ -21,7 +21,7 @@ abstract class PostType implements Registrable {
 	/**
 	 * Creates a post type object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return bool Whether the post type was registered successfully.
 	 */
@@ -40,7 +40,7 @@ abstract class PostType implements Registrable {
 	/**
 	 * Gets post type arguments for this post type object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return array Post type arguments.
 	 */

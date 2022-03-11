@@ -1,32 +1,32 @@
 {
   "name": "wearerequired/common-php",
-  "description": "Common PHP Components for WordPress",
   "type": "library",
+  "description": "Common PHP Components for WordPress",
   "license": "GPL-2.0-or-later",
   "authors": [
     {
-        "name": "required",
-        "email": "info@required.ch",
-        "homepage": "https://required.com",
-        "role": "Company"
+      "name": "required",
+      "email": "info@required.ch",
+      "homepage": "https://required.com",
+      "role": "Company"
     },
     {
-        "name": "Dominik Schilling",
-        "email": "dominik@required.ch",
-        "role": "Developer"
+      "name": "Dominik Schilling",
+      "email": "dominik@required.ch",
+      "role": "Developer"
     }
-],
+  ],
   "require": {
-    "php": ">=7.1"
+    "php": ">=7.4"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.2.x-dev"
+    }
   },
   "autoload": {
     "psr-4": {
       "Required\\Common\\": "src"
-    }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0.x-dev"
     }
   },
   "require-dev": {

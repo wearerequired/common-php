@@ -2,7 +2,7 @@
 /**
  * Container class.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 
 namespace Required\Common;
@@ -13,14 +13,14 @@ use Required\Common\Contracts\Registrable;
  * Class used to create a container for registrable objects which can
  * be bootstrapped at once.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 class Container {
 
 	/**
 	 * Holds registrable objects.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var \Required\Common\Contracts\Registrable[]
 	 */
@@ -29,7 +29,7 @@ class Container {
 	/**
 	 * Whether this container is $bootstrapped.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @var bool
 	 */
@@ -38,7 +38,7 @@ class Container {
 	/**
 	 * Adds a new registrable object to the container.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @param string                                 $name     Name of the registrable object.
 	 * @param \Required\Common\Contracts\Registrable $callable Registrable object.
@@ -50,7 +50,7 @@ class Container {
 	/**
 	 * Registers all registrable object.
 	 *
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 *
 	 * @return bool True on success, false if already bootstrapped.
 	 */

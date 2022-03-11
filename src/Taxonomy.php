@@ -44,10 +44,6 @@ abstract class Taxonomy implements Registrable {
 			return ! is_wp_error( $taxonomy );
 		}
 
-		print 'foo';
-
-		__( 'foo', 'bar' );
-
 		return true;
 	}
 

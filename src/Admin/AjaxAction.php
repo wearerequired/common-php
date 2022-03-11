@@ -16,7 +16,7 @@ use Required\Common\Contracts\Registrable;
  */
 abstract class AjaxAction implements Registrable {
 
-	public const ACTION = 'heartbeat';
+	public const ACTION = 'ajax-action';
 
 	/**
 	 * Whether the Ajax action can be called unauthenticated.

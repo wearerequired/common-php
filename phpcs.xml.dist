@@ -23,4 +23,8 @@
 			</property>
 		</properties>
 	</rule>
+
+	<rule ref="Squiz.Commenting.VariableComment">
+		<exclude-pattern>/src/Args/*</exclude-pattern>
+	</rule>
 </ruleset>

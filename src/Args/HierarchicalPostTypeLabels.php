@@ -40,6 +40,13 @@ class HierarchicalPostTypeLabels extends Args\Shared\Base {
 	public string $menu_name;
 
 	/**
+	 * Label for add new from admin bar.
+	 *
+	 * Default is value of `$singular_name`.
+	 */
+	public string $name_admin_bar;
+
+	/**
 	 * Short label for adding a new item.
 	 *
 	 * When internationalizing this string, please use a {@link https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/#disambiguation-by-context gettext context}.

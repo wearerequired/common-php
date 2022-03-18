@@ -7,6 +7,7 @@
 
 namespace Required\Common;
 
+use Required\Common\Args\PostMeta as PostMetaArgs;
 use Required\Common\Contracts\Registrable;
 
 /**
@@ -80,7 +81,7 @@ abstract class PostMeta implements Registrable {
 	 * @return string Type of the data.
 	 */
 	protected function type(): string {
-		return 'string';
+		return PostMetaArgs::TYPE_STRING;
 	}
 
 	/**

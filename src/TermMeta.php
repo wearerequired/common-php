@@ -5,6 +5,8 @@
  * @since 0.1.0
  */
 
+declare( strict_types=1 );
+
 namespace Required\Common;
 
 use Required\Common\Args\TermMeta as TermMetaArgs;
@@ -33,29 +35,31 @@ abstract class TermMeta implements Registrable {
 		return register_term_meta(
 			$this->taxonomy(),
 			static::KEY,
-			$this->get_args()
+			$this->get_args()->toArray()
 		);
 	}
 
 	/**
-	 * Gets term meta arguments for this term meta object.
+	 * Gets term meta arguments for this post meta object.
 	 *
 	 * @since 0.1.0
 	 *
 	 * @see register_meta() For the supported arguments.
 	 *
-	 * @return array Term meta arguments.
+	 * @return \Required\Common\Args\TermMeta Post meta arguments.
 	 */
-	protected function get_args(): array {
-		return [
-			'type'              => $this->type(),
-			'description'       => $this->description(),
-			'single'            => $this->is_single(),
-			'default'           => $this->default(),
-			'sanitize_callback' => [ $this, 'sanitize' ],
-			'auth_callback'     => [ $this, 'auth' ],
-			'show_in_rest'      => $this->show_in_rest(),
-		];
+	protected function get_args(): TermMetaArgs {
+		$args = new TermMetaArgs();
+
+		$args->type              = $this->type();
+		$args->description       = $this->description();
+		$args->single            = $this->is_single();
+		$args->default           = $this->default();
+		$args->sanitize_callback = [ $this, 'sanitize' ];
+		$args->auth_callback     = [ $this, 'auth' ];
+		$args->show_in_rest      = $this->show_in_rest();
+
+		return $args;
 	}
 
 	/**
@@ -127,7 +131,7 @@ abstract class TermMeta implements Registrable {
 	 * @param string $object_type     Object type.
 	 * @return mixed Sanitized meta value.
 	 */
-	public function sanitize( $meta_value, $meta_key, $object_type ) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+	public function sanitize( $meta_value, string $meta_key, string $object_type ) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 		return $meta_value;
 	}
 
@@ -136,15 +140,15 @@ abstract class TermMeta implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param bool   $allowed   Whether the user can add the term meta. Default false.
-	 * @param string $meta_key  The meta key.
-	 * @param int    $object_id Object ID.
-	 * @param int    $user_id   User ID.
-	 * @param string $cap       Capability name.
-	 * @param array  $caps      User capabilities.
+	 * @param bool     $allowed   Whether the user can add the term meta. Default false.
+	 * @param string   $meta_key  The meta key.
+	 * @param int      $object_id Object ID.
+	 * @param int      $user_id   User ID.
+	 * @param string   $cap       Capability name.
+	 * @param string[] $caps      User capabilities.
 	 * @return bool False if the key is protected, true otherwise.
 	 */
-	public function auth( $allowed, $meta_key, $object_id, $user_id, $cap, $caps ): bool { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+	public function auth( bool $allowed, string $meta_key, int $object_id, int $user_id, string $cap, array $caps ): bool { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 		return ! is_protected_meta( $meta_key, 'term' );
 	}
 
@@ -157,7 +161,10 @@ abstract class TermMeta implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return bool|array Whether the data is public.
+	 * @return bool|array{
+	 *     schema: mixed[],
+	 *     prepare_callback: callable(mixed,\WP_REST_Request,mixed[]): mixed,
+	 * }
 	 */
 	protected function show_in_rest() {
 		return false;

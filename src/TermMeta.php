@@ -7,6 +7,7 @@
 
 namespace Required\Common;
 
+use Required\Common\Args\TermMeta as TermMetaArgs;
 use Required\Common\Contracts\Registrable;
 
 /**
@@ -80,7 +81,7 @@ abstract class TermMeta implements Registrable {
 	 * @return string Type of the data.
 	 */
 	protected function type(): string {
-		return 'string';
+		return TermMetaArgs::TYPE_STRING;
 	}
 
 	/**

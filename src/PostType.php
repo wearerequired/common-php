@@ -7,6 +7,7 @@
 
 namespace Required\Common;
 
+use Required\Common\Args\PostType as PostTypeArgs;
 use Required\Common\Contracts\Registrable;
 
 /**
@@ -29,7 +30,7 @@ abstract class PostType implements Registrable {
 		if ( ! post_type_exists( static::NAME ) ) {
 			$post_type = register_post_type(
 				static::NAME,
-				$this->get_args()
+				$this->get_args()->toArray()
 			);
 			return ! is_wp_error( $post_type );
 		}
@@ -42,7 +43,7 @@ abstract class PostType implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return array Post type arguments.
+	 * @return \Required\Common\Args\PostType Post type arguments.
 	 */
-	abstract protected function get_args(): array;
+	abstract protected function get_args(): PostTypeArgs;
 }

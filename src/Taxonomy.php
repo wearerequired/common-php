@@ -7,6 +7,7 @@
 
 namespace Required\Common;
 
+use Required\Common\Args\Taxonomy as TaxonomyArgs;
 use Required\Common\Contracts\Registrable;
 
 /**
@@ -39,7 +40,7 @@ abstract class Taxonomy implements Registrable {
 			$taxonomy = register_taxonomy(
 				static::NAME,
 				$this->get_object_types(),
-				$this->get_args()
+				$this->get_args()->toArray()
 			);
 			return ! is_wp_error( $taxonomy );
 		}
@@ -74,7 +75,7 @@ abstract class Taxonomy implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return array Taxonomy arguments.
+	 * @return \Required\Common\Args\Taxonomy Taxonomy arguments.
 	 */
-	abstract protected function get_args();
+	abstract protected function get_args(): TaxonomyArgs;
 }

@@ -28,7 +28,7 @@ abstract class Taxonomy implements Registrable {
 	 *
 	 * @var array
 	 */
-	protected $object_types;
+	protected $object_types = [];
 
 	/**
 	 * Creates a taxonomy object.

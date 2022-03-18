@@ -5,6 +5,8 @@
  * @since 0.1.0
  */
 
+declare( strict_types=1 );
+
 namespace Required\Common;
 
 use Required\Common\Args\PostType as PostTypeArgs;

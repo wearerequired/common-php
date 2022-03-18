@@ -5,6 +5,8 @@
  * @since 0.1.0
  */
 
+declare( strict_types=1 );
+
 namespace Required\Common;
 
 use Required\Common\Args\Taxonomy as TaxonomyArgs;
@@ -53,9 +55,9 @@ abstract class Taxonomy implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param array|string $object_type Object type or array of object types with which the taxonomy should be associated.
+	 * @param string[]|string $object_type Object type or array of object types with which the taxonomy should be associated.
 	 */
-	public function set_object_types( $object_type ) {
+	public function set_object_types( $object_type ): void {
 		$this->object_types = (array) $object_type;
 	}
 
@@ -64,9 +66,9 @@ abstract class Taxonomy implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return array Object types the taxonomy is associated with.
+	 * @return string[] Object types the taxonomy is associated with.
 	 */
-	public function get_object_types() {
+	public function get_object_types(): array {
 		return $this->object_types;
 	}
 

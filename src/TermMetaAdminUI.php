@@ -9,6 +9,7 @@ namespace Required\Common;
 
 use Required\Common\Contracts\Registrable;
 use Required\Common\Contracts\Taxonomy;
+use Required\Common\Contracts\TermMeta;
 use WP_Term;
 
 /**

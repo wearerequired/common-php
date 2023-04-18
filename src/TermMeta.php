@@ -11,13 +11,14 @@ namespace Required\Common;
 
 use Required\Common\Args\TermMeta as TermMetaArgs;
 use Required\Common\Contracts\Registrable;
+use Required\Common\Contracts\TermMeta as TermMetaInterface;
 
 /**
  * Class used to implement term meta.
  *
  * @since 0.1.0
  */
-abstract class TermMeta implements Registrable {
+abstract class TermMeta implements Registrable, TermMetaInterface {
 
 	/**
 	 * Term meta key.

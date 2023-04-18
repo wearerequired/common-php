@@ -11,13 +11,14 @@ namespace Required\Common;
 
 use Required\Common\Args\Taxonomy as TaxonomyArgs;
 use Required\Common\Contracts\Registrable;
+use Required\Common\Contracts\Taxonomy as TaxonomyInterface;
 
 /**
  * Class used to implement custom taxonomies.
  *
  * @since 0.1.0
  */
-abstract class Taxonomy implements Registrable {
+abstract class Taxonomy implements Registrable, TaxonomyInterface {
 
 	public const NAME = 'category';
 

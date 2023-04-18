@@ -10,6 +10,7 @@ declare( strict_types=1 );
 namespace Required\Common;
 
 use Required\Common\Args\PostMeta as PostMetaArgs;
+use Required\Common\Contracts\PostMeta as PostMetaInterface;
 use Required\Common\Contracts\Registrable;
 
 /**
@@ -17,7 +18,7 @@ use Required\Common\Contracts\Registrable;
  *
  * @since 0.1.0
  */
-abstract class PostMeta implements Registrable {
+abstract class PostMeta implements Registrable, PostMetaInterface {
 
 	/**
 	 * Post meta key.

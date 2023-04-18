@@ -21,14 +21,14 @@ abstract class TermMetaAdminUI implements Registrable {
 	/**
 	 * The taxonomy.
 	 *
-	 * @var \Required\Common\Taxonomy
+	 * @var \Required\Common\Contracts\Taxonomy
 	 */
 	protected $taxonomy;
 
 	/**
 	 * The term meta.
 	 *
-	 * @var \Required\Common\TermMeta
+	 * @var \Required\Common\Contracts\TermMeta
 	 */
 	protected $term_meta;
 
@@ -38,7 +38,7 @@ abstract class TermMetaAdminUI implements Registrable {
 	 * @since 0.1.0
 	 *
 	 * @param \Required\Common\Contracts\Taxonomy $taxonomy  The taxonomy.
-	 * @param \Required\Common\TermMeta           $term_meta The term meta.
+	 * @param \Required\Common\Contracts\TermMeta $term_meta The term meta.
 	 */
 	public function __construct( Taxonomy $taxonomy, TermMeta $term_meta ) {
 		$this->taxonomy  = $taxonomy;

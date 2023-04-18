@@ -13,5 +13,4 @@ namespace Required\Common\Contracts;
  * @since 0.3.2
  */
 interface Taxonomy {
-
 }

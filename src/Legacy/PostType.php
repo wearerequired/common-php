@@ -9,6 +9,7 @@
 
 namespace Required\Common\Legacy;
 
+use Required\Common\Contracts\PostType as PostTypeInterface;
 use Required\Common\Contracts\Registrable;
 
 /**
@@ -16,7 +17,7 @@ use Required\Common\Contracts\Registrable;
  *
  * @since 0.1.0
  */
-abstract class PostType implements Registrable {
+abstract class PostType implements Registrable, PostTypeInterface {
 
 	public const NAME = 'post';
 

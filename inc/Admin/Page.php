@@ -24,8 +24,6 @@ class Page implements Registrable {
 	 * @since 0.1.0
 	 *
 	 * @see is_admin()
-	 *
-	 * @var int
 	 */
 	public const int ADMIN = 1;
 
@@ -35,8 +33,6 @@ class Page implements Registrable {
 	 * @since 0.1.0
 	 *
 	 * @see is_network_admin()
-	 *
-	 * @var int
 	 */
 	public const int ADMIN_NETWORK = 2;
 
@@ -46,8 +42,6 @@ class Page implements Registrable {
 	 * @since 0.1.0
 	 *
 	 * @see is_user_admin()
-	 *
-	 * @var int
 	 */
 	public const int ADMIN_USER = 3;
 
@@ -181,8 +175,6 @@ class Page implements Registrable {
 	 * Returns the action for registering the page.
 	 *
 	 * @since 0.1.0
-	 *
-	 * @return string
 	 */
 	private function get_action(): string {
 		switch ( $this->admin ) {

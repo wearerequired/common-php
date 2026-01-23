@@ -6,7 +6,7 @@
   "authors": [
     {
       "name": "required",
-      "email": "info@required.ch",
+      "email": "team@required.com",
       "homepage": "https://required.com",
       "role": "Company"
     },
@@ -17,11 +17,11 @@
     }
   ],
   "require": {
-    "php": ">=7.4",
+    "php": ">=8.3",
     "johnbillion/args": "^1.2"
   },
   "require-dev": {
-    "szepeviktor/phpstan-wordpress": "^1.0"
+    "szepeviktor/phpstan-wordpress": "^1.0 || ^2.0"
   },
   "autoload": {
     "psr-4": {

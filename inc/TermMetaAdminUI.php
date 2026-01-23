@@ -26,14 +26,14 @@ abstract class TermMetaAdminUI implements Registrable {
 	 *
 	 * @var \Required\Common\Contracts\Taxonomy
 	 */
-	protected $taxonomy;
+	protected Taxonomy $taxonomy;
 
 	/**
 	 * The term meta.
 	 *
 	 * @var \Required\Common\Contracts\TermMeta
 	 */
-	protected $term_meta;
+	protected TermMeta $term_meta;
 
 	/**
 	 * Constructor.
@@ -69,7 +69,7 @@ abstract class TermMetaAdminUI implements Registrable {
 		// List table.
 		add_filter( "manage_edit-{$taxonomy}_columns", [ $this, 'add_column' ] );
 		add_filter( "manage_edit-{$taxonomy}_sortable_columns", [ $this, 'add_sortable_column' ] );
-		add_action( "manage_edit-{$taxonomy}_custom_column", [ $this, 'render_column' ] );
+		add_action( "manage_edit-{$taxonomy}_custom_column", [ $this, 'render_column' ], 10, 2 );
 
 		return true;
 	}
@@ -81,7 +81,7 @@ abstract class TermMetaAdminUI implements Registrable {
 	 *
 	 * @param int $term_id Term ID.
 	 */
-	abstract public function add( int $term_id );
+	abstract public function add( int $term_id ): void;
 
 	/**
 	 * Updates an existing term meta.
@@ -90,14 +90,14 @@ abstract class TermMetaAdminUI implements Registrable {
 	 *
 	 * @param int $term_id Term ID.
 	 */
-	abstract public function update( int $term_id );
+	abstract public function update( int $term_id ): void;
 
 	/**
 	 * Renders field when adding a new term.
 	 *
 	 * @since 0.1.0
 	 */
-	abstract public function render_add_field();
+	abstract public function render_add_field(): void;
 
 	/**
 	 * Renders field when editing a term.
@@ -106,15 +106,15 @@ abstract class TermMetaAdminUI implements Registrable {
 	 *
 	 * @param \WP_Term $term Current term object.
 	 */
-	abstract public function render_edit_field( WP_Term $term );
+	abstract public function render_edit_field( WP_Term $term ): void;
 
 	/**
 	 * Adds the term meta to the list of list table columns.
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param array $columns An array of columns.
-	 * @return array An array of columns.
+	 * @param array<string, string> $columns An array of columns.
+	 * @return array<string, string> An array of columns.
 	 */
 	public function add_column( array $columns ): array {
 		return $columns;
@@ -125,8 +125,8 @@ abstract class TermMetaAdminUI implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param array $sortable_columns An array of sortable columns.
-	 * @return array An array of sortable columns.
+	 * @param array<string, string> $sortable_columns An array of sortable columns.
+	 * @return array<string, string> An array of sortable columns.
 	 */
 	public function add_sortable_column( array $sortable_columns ): array {
 		return $sortable_columns;
@@ -140,5 +140,5 @@ abstract class TermMetaAdminUI implements Registrable {
 	 * @param string $column_name Name of the column.
 	 * @param int    $term_id     Term ID.
 	 */
-	public function render_column( string $column_name, int $term_id ) {} // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+	public function render_column( string $column_name, int $term_id ): void {} // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 }

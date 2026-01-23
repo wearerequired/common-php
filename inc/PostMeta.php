@@ -23,7 +23,7 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 	/**
 	 * Post meta key.
 	 */
-	public const KEY = null;
+	public const string KEY = '';
 
 	/**
 	 * Registers the object.
@@ -33,10 +33,30 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 	 * @return bool Whether the post meta was registered successfully.
 	 */
 	public function register(): bool {
+		if ( static::KEY === '' ) {
+			return false;
+		}
+
+		/**
+		 * @phpstan-var array{
+		 *   object_subtype?: string,
+		 *   type?: string,
+		 *   label?: string,
+		 *   description?: string,
+		 *   single?: bool,
+		 *   default?: mixed,
+		 *   sanitize_callback?: callable,
+		 *   auth_callback?: callable,
+		 *   show_in_rest?: bool|array<string, mixed>,
+		 *   revisions_enabled?: bool,
+		 * } $args
+		 */
+		$args = $this->get_args()->toArray();
+
 		return register_post_meta(
 			$this->post_type(),
 			static::KEY,
-			$this->get_args()->toArray()
+			$args
 		);
 	}
 
@@ -57,7 +77,7 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 		$args->single            = $this->is_single();
 		$args->default           = $this->default();
 		$args->sanitize_callback = [ $this, 'sanitize' ];
-		$args->auth_callback     = [ $this, 'auth' ];
+		$args->auth_callback     = [ $this, 'auth_callback' ];
 		$args->show_in_rest      = $this->show_in_rest();
 
 		return $args;
@@ -85,6 +105,7 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 	 *
 	 * @return string Type of the data.
 	 */
+	/** @return 'array'|'boolean'|'integer'|'number'|'object'|'string' */
 	protected function type(): string {
 		return PostMetaArgs::TYPE_STRING;
 	}
@@ -118,7 +139,7 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 	 *
 	 * @return mixed The default value.
 	 */
-	protected function default() {
+	protected function default(): mixed {
 		return '';
 	}
 
@@ -132,7 +153,7 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 	 * @param string $object_type     Object type.
 	 * @return mixed Sanitized meta value.
 	 */
-	public function sanitize( $meta_value, string $meta_key, string $object_type ) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+	public function sanitize( mixed $meta_value, string $meta_key, string $object_type ): mixed { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 		return $meta_value;
 	}
 
@@ -154,6 +175,21 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 	}
 
 	/**
+	 * Adapter for the narrower `johnbillion/args` auth callback signature.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param bool   $allowed        Whether the user can add the post meta.
+	 * @param string $meta_key       The meta key.
+	 * @param string $object_type    Object type.
+	 * @param string $object_subtype Object subtype.
+	 * @return bool Whether the user is allowed to edit meta.
+	 */
+	public function auth_callback( bool $allowed, string $meta_key, string $object_type, string $object_subtype = '' ): bool { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+		return $this->auth( $allowed, $meta_key, 0, 0, '', [] );
+	}
+
+	/**
 	 * Whether data associated with this meta key can be considered public and
 	 * should be accessible via the REST API.
 	 *
@@ -163,11 +199,11 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 	 * @since 0.1.0
 	 *
 	 * @return bool|array{
-	 *     schema: mixed[],
-	 *     prepare_callback: callable(mixed,\WP_REST_Request,mixed[]): mixed,
+	 *     schema: array<string, mixed>,
+	 *     prepare_callback: callable(mixed,\WP_REST_Request<array<string, mixed>>,array<string, mixed>): mixed,
 	 * }
 	 */
-	protected function show_in_rest() {
+	protected function show_in_rest(): array|bool {
 		return false;
 	}
 }

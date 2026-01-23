@@ -21,10 +21,10 @@ interface ShortcodeView {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param array  $attributes    Attributes of the shortcode.
-	 * @param null   $content       The content.
-	 * @param string $shortcode_tag The shortcode tag.
+	 * @param array<string, mixed> $attributes    Attributes of the shortcode.
+	 * @param string|null          $content       The content.
+	 * @param string               $shortcode_tag The shortcode tag.
 	 * @return string HTML output of the shortcode.
 	 */
-	public function render( $attributes, $content, $shortcode_tag ): string;
+	public function render( array $attributes, ?string $content, string $shortcode_tag ): string;
 }

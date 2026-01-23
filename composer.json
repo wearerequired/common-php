@@ -34,6 +34,6 @@
     }
   },
   "scripts": {
-    "analyze": "vendor/bin/phpstan analyze --no-progress"
+    "analyze": "vendor/bin/phpstan analyze --no-progress --memory-limit 1G"
   }
 }

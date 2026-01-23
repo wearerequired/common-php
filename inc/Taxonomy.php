@@ -20,16 +20,10 @@ use Required\Common\Contracts\Taxonomy as TaxonomyInterface;
  */
 abstract class Taxonomy implements Registrable, TaxonomyInterface {
 
-	public const NAME = 'category';
+	public const string NAME = 'category';
 
-	/**
-	 * Object types the taxonomy is associated with.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @var array
-	 */
-	protected $object_types = [];
+	/** @var array<string> */
+	protected array $object_types = [];
 
 	/**
 	 * Creates a taxonomy object.
@@ -39,11 +33,47 @@ abstract class Taxonomy implements Registrable, TaxonomyInterface {
 	 * @return bool Whether the taxonomy was registered successfully.
 	 */
 	public function register(): bool {
-		if ( ! taxonomy_exists( static::NAME ) ) {
+		$name = static::NAME;
+
+		if ( ! taxonomy_exists( $name ) ) {
+			/**
+			 * WordPress stubs currently treat this as an array shape. `johnbillion/args`
+			 * returns a plain `array<string, mixed>`, so we assert the expected shape here.
+			 *
+			 * @phpstan-var array{
+			 *   labels?: string[],
+			 *   description?: string,
+			 *   public?: bool,
+			 *   publicly_queryable?: bool,
+			 *   hierarchical?: bool,
+			 *   show_ui?: bool,
+			 *   show_in_menu?: bool,
+			 *   show_in_nav_menus?: bool,
+			 *   show_in_rest?: bool,
+			 *   rest_base?: string,
+			 *   rest_namespace?: string,
+			 *   rest_controller_class?: string,
+			 *   show_tagcloud?: bool,
+			 *   show_in_quick_edit?: bool,
+			 *   show_admin_column?: bool,
+			 *   meta_box_cb?: bool|callable,
+			 *   meta_box_sanitize_cb?: callable,
+			 *   capabilities?: array{manage_terms?: string, edit_terms?: string, delete_terms?: string, assign_terms?: string},
+			 *   rewrite?: bool|array{slug?: string, with_front?: bool, hierarchical?: bool, ep_mask?: int},
+			 *   query_var?: string|bool,
+			 *   update_count_callback?: callable,
+			 *   default_term?: string|array{name?: string, slug?: string, description?: string},
+			 *   sort?: bool,
+			 *   args?: array<string, mixed>,
+			 *   _builtin?: bool,
+			 * } $args
+			 */
+			$args = $this->get_args()->toArray();
+
 			$taxonomy = register_taxonomy(
-				static::NAME,
+				$name,
 				$this->get_object_types(),
-				$this->get_args()->toArray()
+				$args
 			);
 			return ! is_wp_error( $taxonomy );
 		}
@@ -58,8 +88,8 @@ abstract class Taxonomy implements Registrable, TaxonomyInterface {
 	 *
 	 * @param string[]|string $object_type Object type or array of object types with which the taxonomy should be associated.
 	 */
-	public function set_object_types( $object_type ): void {
-		$this->object_types = (array) $object_type;
+	public function set_object_types( array|string $object_type ): void {
+		$this->object_types = array_map( 'strval', (array) $object_type );
 	}
 
 	/**

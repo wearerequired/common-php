@@ -18,7 +18,7 @@ use Required\Common\Contracts\Registrable;
  */
 abstract class AjaxAction implements Registrable {
 
-	public const ACTION = 'ajax-action';
+	public const string ACTION = 'ajax-action';
 
 	/**
 	 * Whether the Ajax action can be called unauthenticated.
@@ -34,7 +34,7 @@ abstract class AjaxAction implements Registrable {
 	 *
 	 * @param bool $allow Whether the Ajax action can be called unauthenticated.
 	 */
-	public function allow_unauthenticated( bool $allow ) {
+	public function allow_unauthenticated( bool $allow ): void {
 		$this->allow_unauthenticated = $allow;
 	}
 
@@ -43,7 +43,7 @@ abstract class AjaxAction implements Registrable {
 	 *
 	 * @since 0.1.0
 	 */
-	abstract public function callback();
+	abstract public function callback(): void;
 
 	/**
 	 * Registers the action.

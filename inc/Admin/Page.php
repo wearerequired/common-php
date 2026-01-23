@@ -27,7 +27,7 @@ class Page implements Registrable {
 	 *
 	 * @var int
 	 */
-	public const ADMIN = 1;
+	public const int ADMIN = 1;
 
 	/**
 	 * Type of admin page.
@@ -38,7 +38,7 @@ class Page implements Registrable {
 	 *
 	 * @var int
 	 */
-	public const ADMIN_NETWORK = 2;
+	public const int ADMIN_NETWORK = 2;
 
 	/**
 	 * Type of admin page.
@@ -49,7 +49,7 @@ class Page implements Registrable {
 	 *
 	 * @var int
 	 */
-	public const ADMIN_USER = 3;
+	public const int ADMIN_USER = 3;
 
 	/**
 	 * Type of admin screen.
@@ -58,7 +58,7 @@ class Page implements Registrable {
 	 *
 	 * @var int
 	 */
-	private $admin;
+	private int $admin;
 
 	/**
 	 * The text to be displayed in the title tags of the page when the menu is selected.
@@ -67,7 +67,7 @@ class Page implements Registrable {
 	 *
 	 * @var string
 	 */
-	private $title;
+	private string $title;
 
 	/**
 	 * The text to be used for the menu.
@@ -76,7 +76,7 @@ class Page implements Registrable {
 	 *
 	 * @var string
 	 */
-	private $menu_title;
+	private string $menu_title;
 
 	/**
 	 * The capability required for this menu to be displayed to the user.
@@ -85,7 +85,7 @@ class Page implements Registrable {
 	 *
 	 * @var string
 	 */
-	private $capability;
+	private string $capability;
 
 	/**
 	 * The slug name to refer to this menu by (should be unique for this menu).
@@ -94,7 +94,7 @@ class Page implements Registrable {
 	 *
 	 * @var string
 	 */
-	private $menu_slug;
+	private string $menu_slug;
 
 	/**
 	 * The view to render the admin page.
@@ -103,7 +103,7 @@ class Page implements Registrable {
 	 *
 	 * @var \Required\Common\Admin\PageView
 	 */
-	private $view;
+	private PageView $view;
 
 	/**
 	 * The slug name for the parent menu (or the file name of a standard WordPress admin page).
@@ -112,7 +112,7 @@ class Page implements Registrable {
 	 *
 	 * @var string
 	 */
-	private $parent_slug;
+	private string $parent_slug;
 
 	/**
 	 * The icon to be used for the menu.
@@ -121,7 +121,7 @@ class Page implements Registrable {
 	 *
 	 * @var string
 	 */
-	private $icon;
+	private string $icon;
 
 	/**
 	 * The position in the menu order this one should appear.
@@ -130,7 +130,7 @@ class Page implements Registrable {
 	 *
 	 * @var null|int
 	 */
-	private $position;
+	private ?int $position;
 
 	/**
 	 * The page's hook_suffix.
@@ -139,16 +139,16 @@ class Page implements Registrable {
 	 *
 	 * @var string
 	 */
-	private $hook_name;
+	private string|false $hook_name = false;
 
 	/**
 	 * Callback to be called when page is loaded.
 	 *
 	 * @since 0.1.0
 	 *
-	 * @var string
+	 * @var callable|null
 	 */
-	private $on_load_callback;
+	private $on_load_callback = null;
 
 	/**
 	 * Constructor.
@@ -165,7 +165,7 @@ class Page implements Registrable {
 	 * @param string                          $icon        Optional. The icon to be used for the menu.
 	 * @param null|int                        $position    Optional. The position in the menu order this one should appear.
 	 */
-	public function __construct( int $admin, string $title, string $menu_title, string $capability, string $menu_slug, PageView $view, string $parent_slug = '', string $icon = '', $position = null ) {
+	public function __construct( int $admin, string $title, string $menu_title, string $capability, string $menu_slug, PageView $view, string $parent_slug = '', string $icon = '', ?int $position = null ) {
 		$this->admin       = $admin;
 		$this->title       = $title;
 		$this->menu_title  = $menu_title;
@@ -184,7 +184,7 @@ class Page implements Registrable {
 	 *
 	 * @return string
 	 */
-	private function get_action() {
+	private function get_action(): string {
 		switch ( $this->admin ) {
 			case static::ADMIN:
 				return 'admin_menu';
@@ -207,9 +207,9 @@ class Page implements Registrable {
 	 *
 	 * @return callable Callback for adding the page to the admin menu.
 	 */
-	private function get_callback() {
+	private function get_callback(): \Closure {
 		if ( $this->parent_slug ) {
-			return function() {
+			return function (): void {
 				$this->hook_name = add_submenu_page(
 					$this->parent_slug,
 					$this->title,
@@ -219,7 +219,7 @@ class Page implements Registrable {
 					[ $this->view, 'render' ]
 				);
 
-				if ( $this->hook_name && is_callable( $this->on_load_callback ) ) {
+				if ( $this->hook_name && \is_callable( $this->on_load_callback ) ) {
 					add_action(
 						"load-{$this->hook_name}",
 						$this->on_load_callback
@@ -227,7 +227,7 @@ class Page implements Registrable {
 				}
 			};
 		} else {
-			return function() {
+			return function (): void {
 				$this->hook_name = add_menu_page(
 					$this->title,
 					$this->menu_title,
@@ -238,7 +238,7 @@ class Page implements Registrable {
 					$this->position
 				);
 
-				if ( $this->hook_name && is_callable( $this->on_load_callback ) ) {
+				if ( $this->hook_name && \is_callable( $this->on_load_callback ) ) {
 					add_action(
 						"load-{$this->hook_name}",
 						$this->on_load_callback
@@ -255,7 +255,7 @@ class Page implements Registrable {
 	 *
 	 * @return string The hook name of the menu page.
 	 */
-	public function get_hook_name() {
+	public function get_hook_name(): string|false {
 		return $this->hook_name;
 	}
 
@@ -266,7 +266,7 @@ class Page implements Registrable {
 	 *
 	 * @return \Required\Common\Admin\PageView The view of the page.
 	 */
-	public function get_view() {
+	public function get_view(): PageView {
 		return $this->view;
 	}
 
@@ -277,7 +277,7 @@ class Page implements Registrable {
 	 *
 	 * @param callable $callback Callback called when page is loaded.
 	 */
-	public function on_load( callable $callback ) {
+	public function on_load( callable $callback ): void {
 		$this->on_load_callback = $callback;
 	}
 

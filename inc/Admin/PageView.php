@@ -21,5 +21,5 @@ interface PageView {
 	 *
 	 * @since 0.1.0
 	 */
-	public function render();
+	public function render(): void;
 }

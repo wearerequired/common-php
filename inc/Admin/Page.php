@@ -205,7 +205,7 @@ class Page implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return callable Callback for adding the page to the admin menu.
+	 * @return \Closure Callback for adding the page to the admin menu.
 	 */
 	private function get_callback(): \Closure {
 		if ( $this->parent_slug ) {

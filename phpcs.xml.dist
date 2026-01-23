@@ -6,6 +6,11 @@
 
 	<rule ref="Required"/>
 
+	<!-- The minimum supported WordPress version for all sniffs which use it. -->
+	<config name="minimum_supported_wp_version" value="6.8"/>
+	<!-- The minimum PHP requirement. -->
+	<config name="testVersion" value="8.3-"/>
+
 	<rule ref="Generic.PHP.ForbiddenFunctions">
 		<properties>
 			<property name="forbiddenFunctions" type="array" extend="true">

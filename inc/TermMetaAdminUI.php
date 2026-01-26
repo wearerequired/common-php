@@ -69,7 +69,7 @@ abstract class TermMetaAdminUI implements Registrable {
 		// List table.
 		add_filter( "manage_edit-{$taxonomy}_columns", [ $this, 'add_column' ] );
 		add_filter( "manage_edit-{$taxonomy}_sortable_columns", [ $this, 'add_sortable_column' ] );
-		add_action( "manage_edit-{$taxonomy}_custom_column", [ $this, 'render_column' ], 10, 2 );
+		add_filter( "manage_{$taxonomy}_custom_column", [ $this, 'render_column' ], 10, 3 );
 
 		return true;
 	}
@@ -137,8 +137,12 @@ abstract class TermMetaAdminUI implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
+	 * @param string $output      Custom column output. Default empty.
 	 * @param string $column_name Name of the column.
 	 * @param int    $term_id     Term ID.
+	 * @return string The column output.
 	 */
-	public function render_column( string $column_name, int $term_id ): void {} // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+	public function render_column( string $output, string $column_name, int $term_id ): string { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+		return $output;
+	}
 }

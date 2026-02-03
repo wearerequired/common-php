@@ -103,9 +103,8 @@ abstract class TermMeta implements Registrable, TermMetaInterface {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return string Type of the data.
+	 * @return 'array'|'boolean'|'integer'|'number'|'object'|'string' Type of the data.
 	 */
-	/** @return 'array'|'boolean'|'integer'|'number'|'object'|'string' */
 	protected function type(): string {
 		return TermMetaArgs::TYPE_STRING;
 	}

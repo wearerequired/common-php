@@ -131,7 +131,7 @@ class Page implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @var string
+	 * @var string|false
 	 */
 	private string|false $hook_name = false;
 
@@ -245,7 +245,7 @@ class Page implements Registrable {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return string The hook name of the menu page.
+	 * @return string|false The hook name of the menu page.
 	 */
 	public function get_hook_name(): string|false {
 		return $this->hook_name;

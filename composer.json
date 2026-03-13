@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": ">=8.3",
-    "johnbillion/args": "^1.2"
+    "johnbillion/args": "^2.4"
   },
   "require-dev": {
     "szepeviktor/phpstan-wordpress": "^1.0 || ^2.0"

@@ -78,7 +78,7 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 		$args->single            = $this->is_single();
 		$args->default           = $this->default();
 		$args->sanitize_callback = [ $this, 'sanitize' ];
-		$args->auth_callback     = [ $this, 'auth_callback' ];
+		$args->auth_callback     = [ $this, 'auth' ];
 		$args->show_in_rest      = $this->show_in_rest();
 
 		return $args;
@@ -183,21 +183,6 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 	 */
 	public function auth( bool $allowed, string $meta_key, int $object_id, int $user_id, string $cap, array $caps ): bool { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 		return ! is_protected_meta( $meta_key, 'post' );
-	}
-
-	/**
-	 * Adapter for the narrower `johnbillion/args` auth callback signature.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @param bool   $allowed        Whether the user can add the post meta.
-	 * @param string $meta_key       The meta key.
-	 * @param string $object_type    Object type.
-	 * @param string $object_subtype Object subtype.
-	 * @return bool Whether the user is allowed to edit meta.
-	 */
-	public function auth_callback( bool $allowed, string $meta_key, string $object_type, string $object_subtype = '' ): bool { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-		return $this->auth( $allowed, $meta_key, 0, 0, '', [] );
 	}
 
 	/**

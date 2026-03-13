@@ -5,6 +5,8 @@
  * @since 0.1.0
  */
 
+declare( strict_types=1 );
+
 namespace Required\Common\Admin;
 
 /**
@@ -19,5 +21,5 @@ interface PageView {
 	 *
 	 * @since 0.1.0
 	 */
-	public function render();
+	public function render(): void;
 }

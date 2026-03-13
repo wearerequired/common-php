@@ -23,7 +23,7 @@ abstract class TermMeta implements Registrable, TermMetaInterface {
 	/**
 	 * Term meta key.
 	 */
-	public const KEY = null;
+	public const string KEY = '';
 
 	/**
 	 * Registers the object.
@@ -33,10 +33,30 @@ abstract class TermMeta implements Registrable, TermMetaInterface {
 	 * @return bool Whether the term meta was registered successfully.
 	 */
 	public function register(): bool {
+		if ( static::KEY === '' ) {
+			return false;
+		}
+
+		/**
+		 * @phpstan-var array{
+		 *   object_subtype?: string,
+		 *   type?: string,
+		 *   label?: string,
+		 *   description?: string,
+		 *   single?: bool,
+		 *   default?: mixed,
+		 *   sanitize_callback?: callable,
+		 *   auth_callback?: callable,
+		 *   show_in_rest?: bool|array<string, mixed>,
+		 *   revisions_enabled?: bool,
+		 * } $args
+		 */
+		$args = $this->get_args()->toArray();
+
 		return register_term_meta(
 			$this->taxonomy(),
 			static::KEY,
-			$this->get_args()->toArray()
+			$args
 		);
 	}
 
@@ -83,7 +103,7 @@ abstract class TermMeta implements Registrable, TermMetaInterface {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return string Type of the data.
+	 * @return 'array'|'boolean'|'integer'|'number'|'object'|'string' Type of the data.
 	 */
 	protected function type(): string {
 		return TermMetaArgs::TYPE_STRING;
@@ -118,7 +138,7 @@ abstract class TermMeta implements Registrable, TermMetaInterface {
 	 *
 	 * @return mixed The default value.
 	 */
-	protected function default() {
+	protected function default(): mixed {
 		return '';
 	}
 
@@ -132,7 +152,7 @@ abstract class TermMeta implements Registrable, TermMetaInterface {
 	 * @param string $object_type     Object type.
 	 * @return mixed Sanitized meta value.
 	 */
-	public function sanitize( $meta_value, string $meta_key, string $object_type ) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+	public function sanitize( mixed $meta_value, string $meta_key, string $object_type ): mixed { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 		return $meta_value;
 	}
 
@@ -163,11 +183,11 @@ abstract class TermMeta implements Registrable, TermMetaInterface {
 	 * @since 0.1.0
 	 *
 	 * @return bool|array{
-	 *     schema: mixed[],
-	 *     prepare_callback: callable(mixed,\WP_REST_Request,mixed[]): mixed,
+	 *     schema: array<string, mixed>,
+	 *     prepare_callback: callable(mixed,\WP_REST_Request<array<string, mixed>>,array<string, mixed>): mixed,
 	 * }
 	 */
-	protected function show_in_rest() {
+	protected function show_in_rest(): array|bool {
 		return false;
 	}
 }

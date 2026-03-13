@@ -4,7 +4,9 @@
 
 	<file>.</file>
 
-	<rule ref="Required"/>
+	<rule ref="Required">
+		<exclude name="Squiz.Commenting.VariableComment.MissingVar"/>
+	</rule>
 
 	<!-- The minimum supported WordPress version for all sniffs which use it. -->
 	<config name="minimum_supported_wp_version" value="6.8"/>

@@ -13,4 +13,10 @@ namespace Required\Common\Contracts;
  * @since 0.3.2
  */
 interface Taxonomy {
+	/**
+	 * Taxonomy name.
+	 *
+	 * Implementations are expected to override this.
+	 */
+	public const string NAME = '';
 }

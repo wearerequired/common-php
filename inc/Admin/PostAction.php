@@ -5,6 +5,8 @@
  * @since 0.1.0
  */
 
+declare( strict_types=1 );
+
 namespace Required\Common\Admin;
 
 use Required\Common\Contracts\Registrable;
@@ -16,14 +18,14 @@ use Required\Common\Contracts\Registrable;
  */
 abstract class PostAction implements Registrable {
 
-	public const ACTION = 'post-action';
+	public const string ACTION = 'post-action';
 
 	/**
 	 * The callback of the action.
 	 *
 	 * @since 0.1.0
 	 */
-	abstract public function callback();
+	abstract public function callback(): void;
 
 	/**
 	 * Registers the action.
@@ -43,7 +45,7 @@ abstract class PostAction implements Registrable {
 	 *
 	 * @return string URL to admin-post.php.
 	 */
-	public static function url() {
+	public static function url(): string {
 		return admin_url( 'admin-post.php?action=' . static::ACTION );
 	}
 }

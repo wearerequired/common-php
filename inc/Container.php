@@ -5,6 +5,8 @@
  * @since 0.1.0
  */
 
+declare( strict_types=1 );
+
 namespace Required\Common;
 
 use Required\Common\Contracts\Registrable;
@@ -22,9 +24,9 @@ class Container {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @var \Required\Common\Contracts\Registrable[]
+	 * @var array<string,\Required\Common\Contracts\Registrable>
 	 */
-	private $values = [];
+	private array $values = [];
 
 	/**
 	 * Whether this container is $bootstrapped.
@@ -33,18 +35,18 @@ class Container {
 	 *
 	 * @var bool
 	 */
-	private $bootstrapped = false;
+	private bool $bootstrapped = false;
 
 	/**
 	 * Adds a new registrable object to the container.
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string                                 $name     Name of the registrable object.
-	 * @param \Required\Common\Contracts\Registrable $callable Registrable object.
+	 * @param string                                 $name        Name of the registrable object.
+	 * @param \Required\Common\Contracts\Registrable $registrable Registrable object.
 	 */
-	public function add( $name, Registrable $callable ) {
-		$this->values[ $name ] = $callable;
+	public function add( string $name, Registrable $registrable ): void {
+		$this->values[ $name ] = $registrable;
 	}
 
 	/**

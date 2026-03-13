@@ -73,6 +73,7 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 		$args = new PostMetaArgs();
 
 		$args->type              = $this->type();
+		$args->label             = $this->label();
 		$args->description       = $this->description();
 		$args->single            = $this->is_single();
 		$args->default           = $this->default();
@@ -107,6 +108,17 @@ abstract class PostMeta implements Registrable, PostMetaInterface {
 	 */
 	protected function type(): string {
 		return PostMetaArgs::TYPE_STRING;
+	}
+
+	/**
+	 * A label for the meta key.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @return string Label for the meta key.
+	 */
+	protected function label(): string {
+		return static::KEY;
 	}
 
 	/**
